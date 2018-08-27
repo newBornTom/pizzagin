@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -118,12 +119,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 # написано с потолка
-MEDIA_URL = '/static/media/' # путь куда картинки сохранять для вывода изображен добавленых в админке
-MEDIA_ROOT = 'E:/Django_projects/pizza'
+MEDIA_URLMEDIA_ROOT = os.path.join(BASE_DIR, 'media') # путь куда картинки сохранять для вывода изображен добавленых в админке
+MEDIA_URL = '/media/'
 
 #------форма обратной связи(относительный путь для шаблонов)
 PROJECT_ROOT = os.path.realpath(os.path.dirname(__file__))
@@ -138,3 +139,9 @@ EMAIL_HOST = 'smtp.gmail.com' #Например, smtp.gmail.com
 EMAIL_HOST_USER = 'tompipka@gmail.com' #Например, user@gmail.com. Именно его необходимо указывать как ВАШ_EMAIL_ДЛЯ_ОТПРАВКИ_СООБЩЕНИЯ в исходном коде предыдущего пункта
 EMAIL_HOST_PASSWORD = '144421a0'
 EMAIL_PORT = 587 
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
