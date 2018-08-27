@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  {% block title %}<title>Pizzaaaa</title>{% endblock %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  <!-- Добавление дополнительного статического CSS файла -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+</head>
+
+<!--<body class="body">-->   <!--задаем фон !-->
+  <body>
+    
+
+  <div class="example1"><span><p>Pizza Pepe</p> <br>моб.0976436374<br>адрес: Курчатова 8<br>График работы: 9.00-19.00</span></div>
+<h1>
+  <div class="container"><!--делает контейнеры слева или сверху или... !-->
+    <div class="row">
+      <div class="col-sm-4">
+
+</div>
+      {% block sidebar %}
+
+          <div class="container"><!-- задаются кнопки через css !-->
+        <div class="main clearfix"> 
+        <!-- <div class="well"> !-->
+            <a href="{% url 'index' %}"><button type="button" class="btn btn-hot btn-md">Pizza</button></a>
+            <a href="{% url 'drink' %}"><button type="button" class="btn btn-sunny btn-md">Drink</button></a>
+            <a href="{% url 'potato' %}"><button type="button" class="btn btn-sunny btn-md">Potato</button></a>
+            <a href="{% url 'pasta' %}"><button type="button" class="btn btn-sunny btn-md">Pasta</button></a>
+
+            <a href="{% url 'contact' %}"><button type="button" class="btn btn-fresh btn-md">Review</button></a>
+
+            
+        </div></div> 
+      
+     {% endblock %}
+      </div>
+      <div class="col-sm-10 "></h1>
+      {% block content %}{% endblock %}
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

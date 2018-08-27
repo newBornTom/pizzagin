@@ -1,0 +1,40 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <h1>-------------------------------------------Drink List----------------</h1>
+
+    {% if pasta_list %}
+    <ul>
+
+      {% for pasta in pasta_list %}<!-- перебераются все напитки в дринклист(фото и название добавляются через админ ане через шаблон img) !-->
+      
+ <style>
+   li {
+    list-style-type: none; /* Убираем маркеры */
+   }
+   ul {
+    margin-left: 0; /* Отступ слева в браузере IE и Opera */
+    padding-left: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
+   }
+  </style>
+
+      <div class="col-md-4 col-md-offset-4"><!--смещает блок на 4 еденицы влево !-->
+      <li> <a href="{{ pasta.title }}"> {{ pasta.title }} </li>
+         <img src="{{ pasta.pastaphoto.url }}"> 
+
+         <li> {{ pasta.price }}</a>  <hr /></li>
+       </div>
+     
+      {% endfor %}
+
+    </ul>
+    {% else %}
+      <p>There are no pastas in the pizzeria.</p>
+    {% endif %}       
+{% endblock %}
+
+
+{% for pic in post.picture_set.all %}
+    <img src="{{ pic.picture.url }}"/>
+{% endfor %}
