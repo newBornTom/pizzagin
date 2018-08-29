@@ -123,7 +123,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 # написано с потолка
-MEDIA_URLMEDIA_ROOT = os.path.join(BASE_DIR, 'media') # путь куда картинки сохранять для вывода изображен добавленых в админке
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media') # путь куда картинки сохранять для вывода изображен добавленых в админке
 MEDIA_URL = '/media/'
 
 #------форма обратной связи(относительный путь для шаблонов)
